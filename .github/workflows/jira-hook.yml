@@ -13,8 +13,8 @@ jobs:
   create-jira-ticket:
     runs-on: ubuntu-latest
     steps:
-      - run: echo ${{ toJSON( github.event ) }}
-      - run: echo ${{ toJSON( secrets ) }}
+      - run: echo "${{ toJSON( github.event ) }}"
+      - run: echo "${{ toJSON( secrets ) }}"
       - name: Add ticket number to pull request
         uses: kt3k/update-pr-description@v1.1.0
         with:
