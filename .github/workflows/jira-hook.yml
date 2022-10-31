@@ -13,6 +13,7 @@ jobs:
   create-jira-ticket:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@master
       - run: echo "${{ toJSON( github.event ) }}"
       - run: echo "${{ toJSON( secrets ) }}"
       - name: Add ticket number to pull request
