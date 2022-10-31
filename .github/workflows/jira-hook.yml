@@ -14,6 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@master
+      - run: git branch --list --all
       - run: echo "${{ toJSON( github.event ) }}"
       - run: echo "${{ toJSON( secrets ) }}"
       - name: Add ticket number to pull request
