@@ -20,3 +20,4 @@ jobs:
         with:
           pr_title: '[MM-0001] ${{ github.event.pull_request.title }}'
           github_token: ${{ secrets.GITHUB_TOKEN }}
+          destination_branch: main
