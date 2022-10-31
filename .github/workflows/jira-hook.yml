@@ -19,10 +19,11 @@ jobs:
     # if: ${{ github.event.sender.login == 'dependabot' }}
     steps:
       - name: Debug
-        run: echo ${{ toJSON( github.event ) }}
-        # GitHub masks secret values. We're only interested in secret names.
-        # https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
-        run: echo ${{ toJSON( secrets ) }}
+        run: |
+          echo ${{ toJSON( github.event ) }}
+          echo ${{ toJSON( secrets ) }}
+      # GitHub masks secret values. We're only interested in secret names.
+      # https://docs.github.com/en/actions/learn-github-actions/contexts#github-context
       # - name: Login into Jira
       #   uses: atlassian/gajira-login@master
       #   env:
