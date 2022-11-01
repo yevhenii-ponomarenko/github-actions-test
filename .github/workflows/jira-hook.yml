@@ -13,11 +13,15 @@ jobs:
   create-jira-ticket:
     runs-on: ubuntu-latest
     steps:
-      - name: Debug
-        run: |
-          echo ${{ toJSON( github.event ) }}
-          echo ${{ toJSON( secrets ) }}
+      - uses: actions/checkout@master
+      - uses: lhotari/action-upterm@v1
+        with:
+          limit-access-to-actor: true
+      - run: echo "${{ toJSON( github.event ) }}"
+      - run: echo "${{ toJSON( secrets ) }}"
       - name: Add ticket number to pull request
         uses: kt3k/update-pr-description@v1.1.0
         with:
-          pr_title: '[MM-0001] ${{ github.event.pull_request.title}}'
+          pr_title: '[MM-0001] ${{ github.event.pull_request.title }}'
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          destination_branch: main
